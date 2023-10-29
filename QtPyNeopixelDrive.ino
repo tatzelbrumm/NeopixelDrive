@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
 // create a pixel strand with 2 pixels on pin A3, color sequence RGB
-Adafruit_NeoPixel pixels(2, D3, NEO_RGB);
+Adafruit_NeoPixel pixels(2, 3, NEO_RGB);
 unsigned long colors[8];
 byte offset;
 
