@@ -16,7 +16,7 @@ void setup()
     unsigned long color= 0;
     for(int rgb= 0; rgb<3; rgb++)
     {
-      color |= (1 & (g >> rgb) ? brightness : 0) << ((2-rgb)<<3); 
+      color |= ((1 & (g >> rgb)) * brightness) << ((2-rgb)<<3); 
     }
     colors[c]= color;
   }
