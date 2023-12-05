@@ -1,15 +1,17 @@
 #include <Adafruit_NeoPixel.h>
 
-int leds= 27;
-// create a pixel strand with 2 pixels on pin A3, color sequence RGB
-Adafruit_NeoPixel pixels(leds, 3, NEO_RGB);
+int leds= 256;
+// create a pixel strand with 2 pixels on pin A3, color sequence GRB
+Adafruit_NeoPixel pixels(leds, 3, NEO_GRB);
 unsigned long colors[8];
 byte offset;
 
 void setup() 
 {
-  byte brightness= 0x20;
+  byte brightness= 0x4;
   pixels.begin();  // initialize the pixels
+  pixels.clear();
+  pixels.show();
   for(int c= 0; c<8; c++)
   {
     int g;
@@ -28,7 +30,7 @@ void loop()
 {
   for (int p= 0; p<leds; p++)
   {
-    pixels.setPixelColor(p, colors[(p+offset)%8]);
+    pixels.setPixelColor(p, colors[(offset)%8]);
   }
   // and write the data
   pixels.show();
