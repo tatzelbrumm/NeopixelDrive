@@ -8,7 +8,7 @@ byte offset;
 
 void setup() 
 {
-  byte brightness= 0x4;
+  byte brightness= 0x10;
   pixels.begin();  // initialize the pixels
   pixels.clear();
   pixels.show();
@@ -30,7 +30,7 @@ void loop()
 {
   for (int p= 0; p<leds; p++)
   {
-    pixels.setPixelColor(p, colors[(offset)%8]);
+    pixels.setPixelColor(p, colors[(p+offset)%8]);
   }
   // and write the data
   pixels.show();
