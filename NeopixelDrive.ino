@@ -28,10 +28,10 @@ void setup()
 
 void loop() 
 {
-  for (int y= 0; y<16; y++)
-    for (int x= 0; x<16; x++)
+  for (unsigned int y= 0; y<16; y++)
+    for (unsigned int x= 0; x<16; x++)
     {
-      pixels.setPixelColor(ADR(x,y), colors[(x+y+offset)%8]);
+      pixels.setPixelColor(ADR(x,y), colors[(x-y+offset)%8]);
     }
   // and write the data
   pixels.show();
