@@ -1,5 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
+#define ADR(x,y) (((y)&0xF)<<4 | ((y)&1? (~(x)&0xF) : (x)&0xF))
+
 int leds= 256;
 // create a pixel strand with 2 pixels on pin A3, color sequence GRB
 Adafruit_NeoPixel pixels(leds, 3, NEO_GRB);
@@ -10,8 +12,6 @@ void setup()
 {
   byte brightness= 0x10;
   pixels.begin();  // initialize the pixels
-  pixels.clear();
-  pixels.show();
   for(int c= 0; c<8; c++)
   {
     int g;
@@ -28,10 +28,11 @@ void setup()
 
 void loop() 
 {
-  for (int p= 0; p<leds; p++)
-  {
-    pixels.setPixelColor(p, colors[(p+offset)%8]);
-  }
+  for (int y= 0; y<16; y++)
+    for (int x= 0; x<16; x++)
+    {
+      pixels.setPixelColor(ADR(x,y), colors[(y+offset)%8]);
+    }
   // and write the data
   pixels.show();
 
