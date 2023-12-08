@@ -3,7 +3,7 @@
 #define ADR(x,y) (((y)&0xF)<<4 | ((y)&1? (~(x)&0xF) : (x)&0xF))
 
 int leds= 256;
-// create a pixel strand with 2 pixels on pin A3, color sequence GRB
+// create a pixel strand with 256 pixels on pin 3, color sequence GRB
 Adafruit_NeoPixel pixels(leds, 3, NEO_GRB);
 unsigned long colors[8];
 byte offset;
